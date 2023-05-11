@@ -18,6 +18,8 @@
 
 <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
+   <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -36,7 +38,10 @@
     <div class="row g-5">
       <div class="col-md-6">
         <h2 class="text-body-emphasis">Tampil Input Data</h2>
-        <p>Nama : </p>
+        <p>Nama : {{ $nama }}</p>
+        <p>NIM : {{ $nim }}</p>
+        <p>Umur : {{ $umur }}</p>
+        <p>Status : {{ $status }}</p>
       </div>
     </div>
   </main>
