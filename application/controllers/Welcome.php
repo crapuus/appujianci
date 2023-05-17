@@ -1,4 +1,5 @@
 <?php
+// session_start();
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -21,19 +22,29 @@ class Welcome extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/userguide3/general/urls.html
      */
-    public function index()
-    {
-        $this->load->helper('url');
-        if (isset($_POST['nama']) && isset($_POST['nim']) && isset($_POST['umur'])) {
-            $_SESSION['nama'] = $_POST['nama'];
-            $_SESSION['nim'] = $_POST['nim'];
-            $_SESSION['umur'] = $_POST['umur'];
-            redirect('Welcome/tampil');
-        }
-
+     public function index(){
         $blade = new Blade(VIEWPATH, APPPATH . 'cache');
         echo $blade->make('form', [])->render();
     }
+    public function tampil()
+    
+    {
+        $nama = $this->input->post('nama');
+        $nim = $this->input->post('nim');
+        $umur = $this->input->post('umur');
+        $status = '';
 
+        if ($umur >= 0 && $umur <= 10) {
+            $status = 'Anak';
+        } elseif ($umur > 10 && $umur <= 20) {
+            $status = 'Remaja';
+        } elseif ($umur > 20 && $umur <= 30) {
+            $status = 'Dewasa';
+        } elseif ($umur > 30) {
+            $status = 'Tua';
+        }
 
+        $blade = new Blade(VIEWPATH, APPPATH . 'cache');
+        echo $blade->make('tampil', ['nama' => $nama, 'nim' => $nim, 'umur' => $umur, 'status' => $status])->render();
+    }
 }
